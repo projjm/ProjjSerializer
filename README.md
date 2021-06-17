@@ -22,6 +22,7 @@ Otherwise, you will probably using the ProjjSerializer class, this will handle m
 
 # ProjjSerializer
 Before initialising ProjjSerializer you need to have defined an enum which represents the different types of messages you are going to be sending and receiving.
+This enum needs to be identical on the application receiving the data, ordering is not important but the enum values must be identical.
 You will then need to bind each message type to an actual data type of which you will be sending.
 Optionally, when binding a message type you can include a callback that will be invoked whenever a message of that type is received.
 In example of a networked music player:
