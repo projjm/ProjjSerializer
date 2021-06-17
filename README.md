@@ -8,8 +8,9 @@ This library will automatically serialize any type without the need for custom a
 # Features
 * Automatic serialization/deserizliation of any* type.
 * Automatic headers and buffer encapsulation.
-* Works with interfaces and abstract data types.
-* Works with private, protected and readonly fields
+* Supports interfaces and abstract data types.
+* Supports private, protected and readonly fields
+* Supports all generic and custom containers
 * Will never serialize the same object twice into the same buffer.
 * Resolves circular references.
 * Optional ignoring of types/fields.
