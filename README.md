@@ -85,6 +85,13 @@ TypeSerializer _typeSerializer = new TypeSerializer();
 byte[] buffer = _typeSerializer.Serialize(dataType, data);
 _typeSerializer.Deserialize(dataType, buffer, out object result)
 ```
+Alternatively if you don't want to deal with casting the result, you can use the generic version of Serialize/Deserialize:
+
+```csharp
+TypeSerializer _typeSerializer = new TypeSerializer();
+byte[] buffer = _typeSerializer.Serialize(data);
+DataType result = _typeSerializer.Deserialize<DataType>(buffer)
+```
 
 # Excluding types and fields
 
