@@ -46,6 +46,8 @@ namespace ProjjSerializer
 
         #region Core Serialization Logic
 
+        public byte[] Serialize<T>(T data) => Serialize(typeof(T), data);
+
         public byte[] Serialize(Type rootType, object data)
         {
             if (!_typeCacher.TypeExplored(rootType))
@@ -150,6 +152,13 @@ namespace ProjjSerializer
         #endregion
 
         #region Deserialization
+
+        public T Deserialize<T>(byte[] payload)
+        {
+            Type type = typeof(T);
+            Deserialize(type, payload, out object result);
+            return (T)result;
+        }
 
         public void Deserialize(Type type, byte[] payload, out object result)
         {

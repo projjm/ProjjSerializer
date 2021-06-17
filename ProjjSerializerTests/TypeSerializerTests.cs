@@ -364,6 +364,21 @@ namespace ProjjSerializer.Tests
             res = (BasicClass)result2;
         }
 
+        [TestMethod]
+        public void Test_Generic_Serialize_Deserialize_Calls()
+        {
+            BasicClass testClass = new BasicClass();
+            _typeSerializer.RegisterType(typeof(BasicClass));
+
+            byte[] bytes1 = _typeSerializer.Serialize(typeof(BasicClass), testClass);
+            _typeSerializer.Deserialize(typeof(BasicClass), bytes1, out object result);
+            BasicClass result1 = (BasicClass)result;
+
+            byte[] bytes2 = _typeSerializer.Serialize(testClass);
+            BasicClass result2 = _typeSerializer.Deserialize<BasicClass>(bytes2);
+
+        }
+
         #region Test Helper Tools
 
         public T TestType<T>(T testValue) => _typeSerializer.DebugTestType(testValue);

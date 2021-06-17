@@ -81,8 +81,5 @@ namespace ProjjSerializer.Tests
             Assert.AreEqual(result[1], "array");
             Assert.AreEqual(result[3], "buffer");
         }
-
     }
-
-
 }
