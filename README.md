@@ -121,5 +121,17 @@ Almost all types are supported, currently the types that will be ignored during 
 
 Anonymous types are currently supported **but** they will **not** work across the network (or different machines). The library relies on caching type data using reflection, because anonymous type field structures are only known at runtime, data cannot be received reliably. To be safe I recommend avoiding them.
 
+# Benchmarks
+Benchmark results for serialization and deserialization of *very* data heavy object using a few of the top serializers.
+```
+|          Method |        Mean |    Error |   StdDev |     Gen 0 |    Gen 1 |    Gen 2 | Allocated |
+|---------------- |------------:|---------:|---------:|----------:|---------:|---------:|----------:|
+|     MessagePack |    547.4 μs |  2.73 μs |  2.42 μs |   73.2422 |  36.1328 |        - |    456 KB |
+| ProjjSerializer |  2,151.6 μs | 41.49 μs | 40.75 μs |  429.6875 | 285.1563 | 285.1563 |  2,862 KB |
+| BinaryFormatter | 17,555.2 μs | 82.19 μs | 76.88 μs | 2343.7500 | 906.2500 | 406.2500 | 15,270 KB |
+|          GroBuf |    300.1 μs |  2.30 μs |  1.80 μs |   97.1680 |  63.9648 |  33.2031 |    545 KB |
+```
+ProjjSerializer underperforms compared to MessagePack and GroBuf, however these libraries do lack support of certain types that are supported by this library. 
+
 # Remarks
 This is my first publicly available library so be cautious about using this in production, it's purpose is to provide quick and easy serialization primiarily for data sent across a network. If serialization speed is an important factor for your application, I recommend using a declaritive, attribute based serializer as it will likely be faster than this library, but will also inevitably be less flexible in terms of supported types.
