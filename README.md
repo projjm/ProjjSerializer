@@ -1,3 +1,4 @@
+[![NuGet](https://img.shields.io/nuget/v/ProjjSerializer)](https://www.nuget.org/packages/ProjjSerializer/)
 # ProjjSerializer
 
 A C# (.NET Core) binary serialization and network buffer encapsulation library designed with ease of use in mind. 
