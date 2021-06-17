@@ -350,6 +350,20 @@ namespace ProjjSerializer.Tests
             Assert.AreEqual(testResult.ignoreMe, null);
         }
 
+        [TestMethod]
+        public void Serialize_Same_Type_Multiple_Times()
+        {
+            BasicClass testClass = new BasicClass();
+            _typeSerializer.RegisterType(typeof(BasicClass));
+
+            byte[] bytes = _typeSerializer.Serialize(typeof(BasicClass), testClass);
+            _typeSerializer.Deserialize(typeof(BasicClass), bytes, out object result);
+            BasicClass res = (BasicClass)result;
+            bytes = _typeSerializer.Serialize(typeof(BasicClass), testClass);
+            _typeSerializer.Deserialize(typeof(BasicClass), bytes, out object result2);
+            res = (BasicClass)result2;
+        }
+
         #region Test Helper Tools
 
         public T TestType<T>(T testValue) => _typeSerializer.DebugTestType(testValue);

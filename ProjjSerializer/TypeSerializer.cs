@@ -12,7 +12,6 @@ namespace ProjjSerializer
         private TypeCacher _typeCacher;
         private ObjectIDGenerator _idGenerator;
         private Dictionary<long, int> _serializedObjects;
-        private Dictionary<long, Type> _serializedObjectsType;
         private Dictionary<int, object> _deserializedObjects;
 
         public TypeSerializer()
@@ -21,7 +20,6 @@ namespace ProjjSerializer
             _idGenerator = new ObjectIDGenerator();
             _serializedObjects = new Dictionary<long, int>(); // id, buffer position
             _deserializedObjects = new Dictionary<int, object>(); // pos, object ref
-            _serializedObjectsType = new Dictionary<long, Type>();
         }
 
         public void RegisterType(Type type)
@@ -141,7 +139,6 @@ namespace ProjjSerializer
                 SerializeExistingObjectFlag(buffer, false);
                 int objectPos = buffer.Count;
                 _serializedObjects.Add(id, objectPos);
-                _serializedObjectsType.Add(id, typeInfo.type);
             }
 
             if (!HasFieldMembers(typeInfo))

@@ -163,5 +163,13 @@ namespace ProjjSerializerTests.TestExampleTypes
         public int b;
     }
 
+    public class BasicClass
+    {
+        public int Age { get; set; }
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+    }
+
 
 }
