@@ -120,3 +120,6 @@ Almost all types are supported, currently the types that will be ignored during 
 * Actions
 
 Anonymous types are currently supported **but** they will **not** work across the network (or different machines). The library relies on caching type data using reflection, because anonymous type field structures are only known at runtime, data cannot be received reliably. To be safe I recommend avoiding them.
+
+# Remarks
+This is my first publicly available library so be cautious about using this in production, it's purpose is to provide quick and easy serialization primiarily for data sent across a network. If serialization speed is an important factor for your application, I recommend using a declaritive, attribute based serializer as it will likely be faster than this library, but will also inevitably be less flexible in terms of supported types.
