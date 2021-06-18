@@ -104,6 +104,9 @@ If you want to exclude a specific type or field from being serialized, you have 
 [SerializerIgnore]
 class ClassToIgnore
 {
+   [SerializerIgnore]
+   private int exampleField
+   
   // Class implementation
 }
 
